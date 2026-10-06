@@ -42,15 +42,15 @@ export default function App() {
     }
 
     // Kiểm tra MSSV:
-    // B + 2 chữ cái A-Z + năm 22-26 + 3 chữ số
-    const mssvPattern = /^B[A-Z]{2}(?:22|23|24|25|26)[0-9]{3}$/;
+    // B + 2 chữ cái A-Z + năm 22-26 + 4 chữ số
+    const mssvPattern = /^B[A-Z]{2}(?:22|23|24|25|26)[0-9]{4}$/;
 
     if (mssv.trim() === '') {
       setMssvError('MSSV không được để trống');
       isValid = false;
     } else if (!mssvPattern.test(mssv.trim())) {
       setMssvError(
-        'MSSV phải có dạng B + 2 chữ cái + năm từ 22 đến 26 + 3 chữ số. Ví dụ: BIT24675'
+        'MSSV phải có dạng B + 2 chữ cái + năm từ 22 đến 26 + 4 chữ số. Ví dụ: BIT246755'
       );
       isValid = false;
     } else {
@@ -238,17 +238,17 @@ export default function App() {
                       ? styles.inputError
                       : null,
                   ]}
-                  placeholder="Nhập MSSV, ví dụ: BIT24675"
+                  placeholder="Nhập MSSV, ví dụ: BIT246755"
                   placeholderTextColor="#999999"
                   value={mssv}
                   autoCapitalize="characters"
-                  maxLength={8}
+                  maxLength={9}
                   returnKeyType="done"
                   onChangeText={(text) => {
                     const normalized = text
                       .toUpperCase()
                       .replace(/[^A-Z0-9]/g, '')
-                      .slice(0, 8);
+                      .slice(0, 9);
 
                     setMssv(normalized);
 
